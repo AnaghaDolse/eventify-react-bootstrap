@@ -1,4 +1,46 @@
+const schedule = [
+  {
+    id: 1,
+    time: '09:00 AM',
+    session: 'Opening Keynote',
+    speaker: 'John Doe',
+    type: 'Keynote',
+  },
+  {
+    id: 2,
+    time: '10:30 AM',
+    session: 'Building Modern React Applications',
+    speaker: 'Sarah Williams',
+    type: 'Workshop',
+  },
+  {
+    id: 3,
+    time: '01:00 PM',
+    session: 'Cloud Architecture for Developers',
+    speaker: 'Michael Smith',
+    type: 'Talk',
+  },
+  {
+    id: 4,
+    time: '03:00 PM',
+    session: 'Design Systems Workshop',
+    speaker: 'Sarah Williams',
+    type: 'Workshop',
+  },
+]
+
 const Schedule = () => {
+  const getBadgeClass = (type) => {
+    if (type === 'Keynote') {
+      return 'badge text-bg-primary'
+    }
+
+    if (type === 'Workshop') {
+      return 'badge text-bg-warning'
+    }
+
+    return 'badge text-bg-info'
+  }
   return (
     <section className='py-5'>
       <div className='container'>
@@ -9,32 +51,26 @@ const Schedule = () => {
         <div className='table-responsive'>
           <table className='table table-striped table-hover'>
             <thead className='table-dark'>
-            <tr>
-              <th>Time</th>
-              <th>Session</th>
-              <th>Speaker</th></tr> 
+              <tr>
+                <th>Time</th>
+                <th>Session</th>
+                <th>Speaker</th>
+                <th>Type</th>
+              </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>09:00 AM</td>
-                <td>Opening Keynote</td>
-                <td>John Doe</td>
-              </tr>
-              <tr>
-                <td>10:30 AM</td>
-                <td>Building Modern React Applications</td>
-                <td>Sarah Williams</td>
-              </tr>
-              <tr>
-                <td>01:00 PM</td>
-                <td>Cloud Architecture for Developers</td>
-                <td>Michael Smith</td>
-              </tr>
-              <tr>
-                <td>03:00 PM</td>
-                <td>Design Systems Workshop</td>
-                <td>Sarah Williams</td>
-              </tr>
+              {schedule.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.time}</td>
+                  <td>{item.session}</td>
+                  <td>{item.speaker}</td>
+                  <td>
+                    <span className={getBadgeClass(item.type)}>
+                      {item.type}
+                    </span>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
