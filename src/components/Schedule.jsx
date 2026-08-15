@@ -41,6 +41,7 @@ const Schedule = () => {
 
     return 'badge text-bg-info'
   }
+
   return (
     <section className='py-5'>
       <div className='container'>
@@ -49,7 +50,7 @@ const Schedule = () => {
           Three days of talks, workshops and networking.
         </p>
         <div className='table-responsive'>
-          <table className='table table-striped table-hover'>
+          <table className='table table-striped table-hover table-bordered rounded overflow-hidden'>
             <thead className='table-dark'>
               <tr>
                 <th>Time</th>
