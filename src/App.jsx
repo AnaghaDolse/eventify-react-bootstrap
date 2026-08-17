@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Speakers from './components/Speakers'
 import Schedule from './components/Schedule'
+import Register from './components/Register'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <Speakers />
       <Schedule />
+      <Register />
     </>
   )
 }
