@@ -1,6 +1,20 @@
-import React from 'react'
+import { useState } from 'react'
 
 const Register = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    ticket: '',
+    message: '',
+    terms: false,
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    console.log(formData)
+  }
+
   return (
     <section className='py-5'>
       <div className='container'>
@@ -15,7 +29,7 @@ const Register = () => {
           <div className='col-md-8 offset-md-2'>
             <div className='card shadow-sm'>
               <div className='card-body p-4'>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className='row'>
                     <div className='col-md-6 mb-3'>
                       <label htmlFor='name' className='form-label'>
@@ -26,6 +40,13 @@ const Register = () => {
                         className='form-control'
                         id='name'
                         placeholder='Enter your name'
+                        value={formData.name}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            name: e.target.value,
+                          })
+                        }
                       />
                     </div>
                     <div className='col-md-6 mb-3'>
@@ -38,6 +59,13 @@ const Register = () => {
                         className='form-control'
                         id='email'
                         placeholder='Enter your email'
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            email: e.target.value,
+                          })
+                        }
                       />
                     </div>
                   </div>
@@ -46,7 +74,17 @@ const Register = () => {
                     <label htmlFor='ticket' className='form-label'>
                       Ticket Type
                     </label>
-                    <select className='form-select' id='ticket'>
+                    <select
+                      className='form-select'
+                      id='ticket'
+                      value={formData.ticket}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          ticket: e.target.value,
+                        })
+                      }
+                    >
                       <option>Select Ticket Type</option>
                       <option>Standard</option>
                       <option>VIP</option>
@@ -62,6 +100,13 @@ const Register = () => {
                       id='message'
                       rows='4'
                       placeholder='Tell us something about yourself...'
+                      value={formData.message}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          message: e.target.value,
+                        })
+                      }
                     ></textarea>
                   </div>
                   <div className='form-check mb-3'>
@@ -69,6 +114,13 @@ const Register = () => {
                       className='form-check-input'
                       type='checkbox'
                       id='terms'
+                      checked={formData.terms}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          terms: e.target.checked,
+                        })
+                      }
                     />
                     <label className='form-check-label' htmlFor='terms'>
                       I agree to the terms and conditions.
