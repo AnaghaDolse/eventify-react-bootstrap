@@ -8,11 +8,44 @@ const Register = () => {
     message: '',
     terms: false,
   })
+  const [errors, setErrors] = useState({})
+
+  const validateForm = () => {
+    const newErrors = {}
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required'
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    }
+
+    if (!formData.ticket) {
+      newErrors.ticket = 'Please select a ticket type'
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required'
+    }
+
+    if (!formData.terms) {
+      newErrors.terms = 'You must accept the terms and conditions'
+    }
+
+    return newErrors
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log(formData)
+    const validationErrors = validateForm()
+
+    setErrors(validationErrors)
+
+    if (Object.keys(validationErrors).length === 0) {
+      console.log(formData)
+    }
   }
 
   return (
@@ -37,7 +70,7 @@ const Register = () => {
                       </label>
                       <input
                         type='text'
-                        className='form-control'
+                        className={`form-control ${errors.name ? 'is-valid' : ''}`}
                         id='name'
                         placeholder='Enter your name'
                         value={formData.name}
@@ -48,6 +81,9 @@ const Register = () => {
                           })
                         }
                       />
+                      {errors.name && (
+                        <div className='invalid-feedback'>{errors.name}</div>
+                      )}
                     </div>
                     <div className='col-md-6 mb-3'>
                       <label htmlFor='email' className='form-label'>
@@ -56,7 +92,7 @@ const Register = () => {
 
                       <input
                         type='email'
-                        className='form-control'
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                         id='email'
                         placeholder='Enter your email'
                         value={formData.email}
@@ -67,6 +103,9 @@ const Register = () => {
                           })
                         }
                       />
+                      {errors.email && (
+                        <div className='invalid-feedback'>{errors.email}</div>
+                      )}
                     </div>
                   </div>
 
@@ -75,7 +114,7 @@ const Register = () => {
                       Ticket Type
                     </label>
                     <select
-                      className='form-select'
+                      className={`form-select ${errors.ticket ? 'is-invalid' : ''}`}
                       id='ticket'
                       value={formData.ticket}
                       onChange={(e) =>
@@ -90,13 +129,16 @@ const Register = () => {
                       <option>VIP</option>
                       <option>Workshop Pass</option>
                     </select>
+                    {errors.ticket && (
+                      <div className='invalid-feedback'>{errors.ticket}</div>
+                    )}
                   </div>
                   <div className='mb-3'>
                     <label htmlFor='message' className='form-label'>
                       Message
                     </label>
                     <textarea
-                      className='form-control'
+                      className={`form-control ${errors.message ? 'is-invalid' : ''}`}
                       id='message'
                       rows='4'
                       placeholder='Tell us something about yourself...'
@@ -108,10 +150,13 @@ const Register = () => {
                         })
                       }
                     ></textarea>
+                    {errors.message && (
+                      <div className='invalid-feedback'>{errors.message}</div>
+                    )}
                   </div>
                   <div className='form-check mb-3'>
                     <input
-                      className='form-check-input'
+                      className={`form-check-input ${errors.terms ? 'is-invalid' : ''}`}
                       type='checkbox'
                       id='terms'
                       checked={formData.terms}
@@ -122,6 +167,9 @@ const Register = () => {
                         })
                       }
                     />
+                    {errors.terms && (
+                      <div className='invalid-feedback'>{errors.terms}</div>
+                    )}
                     <label className='form-check-label' htmlFor='terms'>
                       I agree to the terms and conditions.
                     </label>
