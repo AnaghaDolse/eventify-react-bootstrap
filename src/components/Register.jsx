@@ -9,6 +9,7 @@ const Register = () => {
     terms: false,
   })
   const [errors, setErrors] = useState({})
+  const [submitted, setSubmitted] = useState(false)
 
   const validateForm = () => {
     const newErrors = {}
@@ -19,6 +20,8 @@ const Register = () => {
 
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required'
+    } else if (!/\S+@\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email'
     }
 
     if (!formData.ticket) {
@@ -45,6 +48,7 @@ const Register = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       console.log(formData)
+      setSubmitted(true)
     }
   }
 
@@ -70,16 +74,23 @@ const Register = () => {
                       </label>
                       <input
                         type='text'
-                        className={`form-control ${errors.name ? 'is-valid' : ''}`}
+                        className={`form-control ${errors.name ? 'is-invalid' : formData.name ? 'is-valid' : ''}`}
                         id='name'
                         placeholder='Enter your name'
                         value={formData.name}
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setFormData({
                             ...formData,
                             name: e.target.value,
                           })
-                        }
+
+                          if (errors.name) {
+                            setErrors({
+                              ...errors,
+                              name: '',
+                            })
+                          }
+                        }}
                       />
                       {errors.name && (
                         <div className='invalid-feedback'>{errors.name}</div>
@@ -92,7 +103,13 @@ const Register = () => {
 
                       <input
                         type='email'
-                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                        className={`form-control ${
+                          errors.email
+                            ? 'is-invalid'
+                            : formData.email
+                              ? 'is-valid'
+                              : ''
+                        }`}
                         id='email'
                         placeholder='Enter your email'
                         value={formData.email}
@@ -114,7 +131,7 @@ const Register = () => {
                       Ticket Type
                     </label>
                     <select
-                      className={`form-select ${errors.ticket ? 'is-invalid' : ''}`}
+                      className={`form-select ${errors.ticket ? 'is-invalid' : formData.ticket ? 'is-valid' : ''}`}
                       id='ticket'
                       value={formData.ticket}
                       onChange={(e) =>
@@ -124,7 +141,7 @@ const Register = () => {
                         })
                       }
                     >
-                      <option>Select Ticket Type</option>
+                      <option value=''>Select Ticket Type</option>
                       <option>Standard</option>
                       <option>VIP</option>
                       <option>Workshop Pass</option>
@@ -178,6 +195,11 @@ const Register = () => {
                     Register Now
                   </button>
                 </form>
+                {submitted && (
+                  <div className='alert alert-success mt-3' role='alert'>
+                    Registration submitted successfully!
+                  </div>
+                )}
               </div>
             </div>
           </div>
