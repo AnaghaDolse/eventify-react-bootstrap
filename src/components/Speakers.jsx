@@ -1,4 +1,4 @@
-import SpeakerCard from "./SpeakerCard"
+import SpeakerCard from './SpeakerCard'
 
 const Speakers = () => {
   const speakers = [
@@ -7,21 +7,30 @@ const Speakers = () => {
       name: 'John Doe',
       role: 'Senior Software Engineer',
       image: 'img1',
+      bio: 'John specializes in building scalable web applications and modern frontend architectures.',
+      session: 'Opening Keynote',
+      expertise: 'React & Web Development',
     },
     {
       id: 2,
       name: 'Sarah Williams',
       role: 'UI/UX Designer',
       image: 'img2',
+      bio: 'Sarah focuses on creating accessible, user-friendly interfaces and design systems.',
+      session: 'Building Modern React Applications',
+      expertise: 'UI/UX & Design Systems',
     },
     {
       id: 3,
       name: 'Michael Smith',
       role: 'Cloud Architect',
       image: 'img3',
+      bio: 'Michael helps teams design reliable and scalable cloud infrastructure.',
+      session: 'Cloud Architecture for Developers',
+      expertise: 'Cloud & Infrastructure',
     },
   ]
-  
+
   return (
     <section>
       <div className='container'>
@@ -36,6 +45,9 @@ const Speakers = () => {
                 name={speaker.name}
                 role={speaker.role}
                 image={speaker.image}
+                bio={speaker.bio}
+                session={speaker.session}
+                expertise={speaker.expertise}
               />
             </div>
           ))}
