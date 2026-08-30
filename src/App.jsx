@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Speakers from './components/Speakers'
 import Schedule from './components/Schedule'
 import Register from './components/Register'
+import FAQ from './components/FAQ'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Speakers />
       <Schedule />
       <Register />
+      <FAQ />
     </>
   )
 }
