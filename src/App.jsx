@@ -7,6 +7,7 @@ import Speakers from './components/Speakers'
 import Schedule from './components/Schedule'
 import Register from './components/Register'
 import FAQ from './components/FAQ'
+import Pricing from './components/Pricing'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Schedule />
       <Register />
       <FAQ />
+      <Pricing />
     </>
   )
 }
