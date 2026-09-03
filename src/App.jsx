@@ -8,6 +8,7 @@ import Schedule from './components/Schedule'
 import Register from './components/Register'
 import FAQ from './components/FAQ'
 import Pricing from './components/Pricing'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Register />
       <FAQ />
       <Pricing />
+      <Footer />
     </>
   )
 }
