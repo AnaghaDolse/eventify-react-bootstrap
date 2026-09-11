@@ -58,7 +58,7 @@ const Footer = () => {
           <div className='col-md-6 col-lg-3'>
             <h5 className='fw-bold'>Follow Us</h5>
 
-            <div className='d-flex gap-3'>
+            <div className='d-flex justify-content-center justify-content-lg-start gap-3'>
               <a href='#' className='text-white fs-4'>
                 <i className='bi bi-linkedin'></i>
               </a>

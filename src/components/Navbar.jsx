@@ -1,9 +1,14 @@
 const Navbar = () => {
   return (
-    <nav className='navbar navbar-expand-lg'>
+    <nav className='navbar navbar-expand-lg navbar-dark bg-dark sticky-top'>
       <div className='container'>
         {/* Brand */}
-        <a className="navbar-brand href='#'">Eventify</a>
+        <div className='d-flex align-items-center'>
+          <a className='navbar-brand' href='#'>
+            Eventify
+          </a>
+          <span className='text-secondary d-none d-lg-inline ms-2'>Build. Connect. Innovate.</span>
+        </div>
 
         {/* Mobile Target */}
         <button
@@ -20,34 +25,38 @@ const Navbar = () => {
 
         {/* Collapsible Navigation */}
         <div className='collapse navbar-collapse' id='navbarNav'>
-          <ul className='navbar-nav ms-auto'>
-            <li className='nav-item'>
+          <ul className='navbar-nav ms-lg-auto'>
+            <li className='nav-item ms-lg-3'>
               <a className='nav-link active' href='#'>
                 Home
               </a>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item ms-lg-3'>
               <a className='nav-link' href='#about'>
                 About
               </a>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item ms-lg-3'>
               <a className='nav-link' href='#speakers'>
                 Speakers
               </a>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item ms-lg-3'>
               <a className='nav-link' href='#schedule'>
                 Schedule
               </a>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item ms-lg-3'>
               <a className='nav-link' href='#contact'>
                 Contact
               </a>
             </li>
+            <li className='nav-item ms-lg-3'>
+              <a href='#register' className='btn btn-primary'>
+                Register Now
+              </a>
+            </li>
           </ul>
-          <button className='btn btn-primary ms-lg-3'>Register Now</button>
         </div>
       </div>
     </nav>
