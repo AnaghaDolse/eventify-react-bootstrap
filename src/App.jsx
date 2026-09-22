@@ -9,6 +9,8 @@ import Register from './components/Register'
 import FAQ from './components/FAQ'
 import Pricing from './components/Pricing'
 import Footer from './components/Footer'
+import Announcement from './components/Announcement'
+import NotificationToast from './components/NotificationToast'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <Register />
       <FAQ />
       <Pricing />
+      <Announcement />
+      <NotificationToast />
       <Footer />
     </>
   )
