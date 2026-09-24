@@ -1,3 +1,31 @@
 body {
   margin: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-section {
+  background: #f8f9fa;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-image-wrapper {
+  position: relative;
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    min-height: auto;
+    text-align: center;
+  }
+}
